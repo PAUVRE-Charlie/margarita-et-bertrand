@@ -1,0 +1,40 @@
+{
+  "name": "name",
+  "private": true,
+  "description": "description",
+  "version": "0.1.0",
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "gatsby": "^4.8.0",
+    "gatsby-plugin-htaccess": "^1.4.0",
+    "gatsby-plugin-image": "^2.9.0",
+    "gatsby-plugin-manifest": "^4.9.0",
+    "gatsby-plugin-offline": "^5.9.0",
+    "gatsby-plugin-preact": "^6.9.0",
+    "gatsby-plugin-preconnect": "^1.3.0",
+    "gatsby-plugin-preload-fonts": "^3.18.1",
+    "gatsby-plugin-purgecss": "^6.1.1",
+    "gatsby-plugin-react-helmet": "^5.9.0",
+    "gatsby-plugin-react-i18next": "^2.0.1",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-transformer-sharp": "^4.9.0",
+    "i18next": "^21.8.14",
+    "preact": "^10.6.6",
+    "preact-render-to-string": "^5.1.20",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.1",
+    "react-i18next": "^11.18.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}

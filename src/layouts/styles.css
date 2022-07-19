@@ -1,0 +1,379 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --white: #fff;
+  --black: #0d171e;
+  --grey-dark: #656565;
+  --grey: #b4b4b4;
+  --grey-light: #f4f4f4;
+  /* --grey-extra-light: #eaeeee; */
+  --primary: #6d6e61;
+  --primary-light: #abac9e;
+  --background: #white;
+  --background-light: #6d6e61;
+
+  --scrollbar-background-color: var(--black);
+  --scrollbar-thumb-color: var(--white);
+  --font-big: Paragon;
+  --font-small: Poppins;
+  --border: 5px solid var(--black);
+  --min-padding: 50px;
+  --max-width: 1280px;
+  --max-width-with-padding: 1380px;
+  --actual-padding-side: max(calc(50vw - var(--max-width) / 2), var(--min-padding));
+}
+
+@font-face {
+  font-family: Paragon;
+  src: local('Paragon'), url('../fonts/paragon/Paragon-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+@font-face {
+  font-family: Manrope;
+  src: url('../fonts/manrope/Manrope-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: Manrope;
+  src: url('../fonts/manrope/Manrope-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: Manrope;
+  src: url('../fonts/manrope/Manrope-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+} */
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--background);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.semi-bold {
+  font-weight: 600;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--black);
+  font-family: var(--font-big);
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 35px;
+  line-height: 46px;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 40px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 42px;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+p,
+small,
+button {
+  color: var(--black);
+  font-weight: normal;
+  font-family: var(--font-small);
+}
+
+p {
+  font-size: 17px;
+  line-height: 30px;
+}
+
+small {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+button,
+nav a {
+  font-weight: normal;
+  font-family: var(--font-small);
+  font-size: 15px;
+  line-height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 13.5px 25.5px;
+  cursor: pointer;
+  max-width: 100%;
+  transition: all 300ms ease;
+  background: none;
+  border: none;
+}
+
+button img {
+  margin-right: 12px;
+}
+
+/* .button-secondary {
+  background-color: transparent;
+  color: var(--white);
+}
+
+.button-tertiary {
+  background-color: transparent;
+  color: var(--white);
+  border: none;
+} */
+
+button:hover,
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* button,
+.button-secondary:hover {
+  color: var(--black);
+} */
+
+img {
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: pointer;
+  line-height: 0px;
+}
+
+select {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: var(--font-small);
+  transform: translateY(-0.125rem);
+  outline: 0;
+  cursor: pointer;
+  color: var(--black);
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+}
+
+option {
+  background-color: var(--background);
+  color: var(--black);
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-background-color);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+  border-left: var(--border);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-background-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 20px;
+  border: 2px solid var(--scrollbar-background-color);
+}
+
+#app {
+  min-height: 100%;
+  background-color: var(--background);
+  overflow: hidden;
+  position: relative;
+}
+
+.with-margins {
+  max-width: var(--max-width-with-padding);
+  padding: 0 var(--min-padding);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px var(--actual-padding-side);
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  width: 80px;
+}
+
+.select-icon {
+  margin-right: 10px;
+  margin-bottom: 1px;
+}
+
+header button {
+  margin-left: 45px;
+}
+
+#content > nav {
+  display: flex;
+  flex: 1;
+  color: var(--black);
+  margin-top: 20%;
+}
+
+#content-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-light);
+  padding-top: 81px;
+  padding-bottom: 45px;
+}
+
+footer p,
+footer small {
+  color: var(--white);
+}
+
+.footer-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-head h2 {
+  margin-top: 11px;
+  margin-bottom: 18px;
+}
+
+footer .links {
+  display: flex;
+  margin-top: 90px;
+  margin-bottom: 50px;
+}
+
+footer .links > * {
+  margin: 17px;
+}
+
+.footer-bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-bottom > * {
+  flex: 1;
+}
+
+.footer-bottom small {
+  text-align: right;
+}
+
+.social-media {
+  margin-right: 34px;
+}
+
+.tag {
+  background-color: var(--tag-background);
+  padding: 4px 25px;
+  border-radius: 20px;
+  color: var(--white);
+  font-family: var(--font-small);
+  font-weight: 600;
+  display: inline-flex;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.tag img {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 565px) {
+  header button {
+    display: none;
+  }
+  footer .links {
+    margin-top: 40px;
+  }
+  footer small,
+  footer a {
+    text-align: center;
+  }
+  .footer-head h2 {
+    text-align: center;
+    font-size: 28px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+  }
+  .footer-bottom small {
+    margin-top: 30px;
+  }
+  .social-media {
+    margin: 0 15px 30px 15px;
+  }
+}
