@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
@@ -6,9 +6,10 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import { useI18next } from 'gatsby-plugin-react-i18next';
 import { useTranslation } from 'react-i18next';
 import './styles.css';
-import { StaticImage } from 'gatsby-plugin-image';
 
-const Layout = ({ title, description, image, hideHeader = false, children }) => {
+const secretPassword = 'margabeber';
+
+const Layout = ({ title, description, image, children }) => {
   const { pathname } = useLocation();
   const { languages, language, changeLanguage } = useI18next();
   const { t } = useTranslation();
@@ -23,8 +24,23 @@ const Layout = ({ title, description, image, hideHeader = false, children }) => 
 
   const isBrowser = () => typeof window !== 'undefined';
 
+  const [showVIPOverlay, setShowVIPOverlay] = useState(false);
+  const [vipPasswordValue, setVIPPasswordValue] = useState('');
+  const [vipError, setVIPError] = useState(false);
+
+  const submitVIPForm = e => {
+    e.preventDefault();
+    if (vipPasswordValue === secretPassword) setShowVIPOverlay(false);
+    else {
+      setVIPError(true);
+      setVIPPasswordValue('');
+    }
+  };
+
+  const isVIP = vipPasswordValue === secretPassword;
+
   return (
-    <div id='app'>
+    <div id='app' style={showVIPOverlay ? { height: '100vh' } : {}}>
       <Helmet
         title={seo.title}
         htmlAttributes={{
@@ -57,8 +73,46 @@ const Layout = ({ title, description, image, hideHeader = false, children }) => 
       <header>
         <div />
         {/* <StaticImage src='../images/logo.svg' className='logo' height={65} quality={100} placeholder='blurred' alt='logo' /> */}
-
         <div>
+          <nav>
+            <Link to='/' className={`${isBrowser() && window?.location.pathname === '/' ? 'bold' : ''}`}>
+              {t('Accueil')} 🤗
+            </Link>
+            <Link to='/history' className={`${isBrowser() && window?.location.pathname === '/history' ? 'bold' : ''}`}>
+              {t('M+B')} 🇨🇴🇫🇷
+            </Link>
+            <a
+              href={language === 'es' ? 'https://form.jotform.com/222051678450352' : 'https://form.jotform.com/222052491788057'}
+              target='_blank'
+              rel='noreferrer'
+            >
+              {t('RSVP')} ✅
+            </a>
+            <Link to='/access&housing' className={`${isBrowser() && window?.location.pathname === '/access&housing' ? 'bold' : ''}`}>
+              {t('Accès & logement')} ✈️🛏
+            </Link>
+            <Link to='/schedule' className={`${isBrowser() && window?.location.pathname === '/schedule' ? 'bold' : ''}`}>
+              {t('Programme')} 📆
+            </Link>
+            <Link to='/q&a' className={`${isBrowser() && window?.location.pathname === '/q&a' ? 'bold' : ''}`}>
+              {t('FAQ')} 🤔
+            </Link>
+            <Link to='/present' className={`${isBrowser() && window?.location.pathname === '/present' ? 'bold' : ''}`}>
+              {t('Cadeaux')} 🎁🏖
+            </Link>
+          </nav>
+        </div>
+        <div>
+          {isVIP ? (
+            <div className='vip-indicator'>
+              <small>VIP</small>
+              <img src='/icons/check.svg' />
+            </div>
+          ) : (
+            <button className='vip-switch button-secondary' onClick={() => setShowVIPOverlay(true)}>
+              Je suis VIP
+            </button>
+          )}
           <div>
             <img src='/icons/world.svg' className='select-icon' alt='language icon' />
             <select name='language' value={language} onChange={e => changeLanguage(e.target.value)} className='bold'>
@@ -71,34 +125,7 @@ const Layout = ({ title, description, image, hideHeader = false, children }) => 
           </div>
         </div>
       </header>
-      <div id='content'>
-        {!hideHeader && (
-          <nav>
-            <Link to='/' className={`${isBrowser() && window?.location.pathname === '/' ? 'bold' : ''}`}>
-              Accueil
-            </Link>
-            <Link to='/history' className={`${isBrowser() && window?.location.pathname === '/history' ? 'bold' : ''}`}>
-              Notre histoire
-            </Link>
-            <a href='https://www.google.com' target='_blank' rel='noreferrer'>
-              Je confirme ma présence
-            </a>
-            <Link to='/access&housing' className={`${isBrowser() && window?.location.pathname === '/access&housing' ? 'bold' : ''}`}>
-              Accès & logement
-            </Link>
-            <Link to='/schedule' className={`${isBrowser() && window?.location.pathname === '/schedule' ? 'bold' : ''}`}>
-              Programme
-            </Link>
-            <Link to='/q&a' className={`${isBrowser() && window?.location.pathname === '/q&a' ? 'bold' : ''}`}>
-              FAQ
-            </Link>
-            <Link to='/present' className={`${isBrowser() && window?.location.pathname === '/present' ? 'bold' : ''}`}>
-              Cadeaux
-            </Link>
-          </nav>
-        )}
-        {children}
-      </div>
+      <div id='content'>{children}</div>
       <footer>
         <div className='footer-head with-margins'>
           {/* <small>{t('Pr^?')}</small>
@@ -111,9 +138,28 @@ const Layout = ({ title, description, image, hideHeader = false, children }) => 
           <a href='mailto:chpauvre@gmail.com' target='_blank' rel='noreferrer'>
             <small>{t('Contactez-nous')}</small>
           </a>
-          <small>Copyright © 2022. Mangakan. All rights reserved.</small>
+          <small>Copyright © 2022. Margarita & Bertrand. All rights reserved.</small>
         </div>
       </footer>
+      {showVIPOverlay && (
+        <div className='vip-overlay'>
+          <form onSubmit={submitVIPForm} className='vip-overlay-content'>
+            <img onClick={() => setShowVIPOverlay(false)} src='/icons/close.svg' alt='close' />
+            <h2>{t('Entrez le mot de passe')}</h2>
+            <input
+              value={vipPasswordValue}
+              onChange={e => setVIPPasswordValue(e.target.value)}
+              type='password'
+              id='password'
+              name='password'
+            />
+            {vipError && <small className='error'>{t('Wrong password')}</small>}
+            <button type='submit' className='button-secondary'>
+              Confirmer
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

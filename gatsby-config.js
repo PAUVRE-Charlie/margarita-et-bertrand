@@ -1,18 +1,18 @@
 // The default metadata that will be used in the SEO component
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby project', // the default name of the tab
-    description: 'Gatsby project', // the description of your website
-    image: '', // image that appears below the link when sharing
-    url: '', // the url where your site will be
+    title: 'Margarita & Bertrand', // the default name of the tab
+    description: 'Site créé pour le mariage de Margarita et Bertrand', // the description of your website
+    image: '/images/hero.jpeg', // image that appears below the link when sharing
+    url: 'https://www.margarita-et-bertrand.fr', // the url where your site will be
   },
 
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`, // must be the first plugin
       options: {
-        name: 'Gatsby project',
-        short_name: 'Gatsby project',
+        name: 'Mariage de Margarita & Bertrand',
+        short_name: 'Margarita & Bertrand',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#ffffff',

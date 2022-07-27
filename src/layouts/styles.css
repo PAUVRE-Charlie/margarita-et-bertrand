@@ -11,10 +11,12 @@
   --grey: #b4b4b4;
   --grey-light: #f4f4f4;
   /* --grey-extra-light: #eaeeee; */
-  --primary: #6d6e61;
-  --primary-light: #abac9e;
-  --background: #white;
-  --background-light: #6d6e61;
+  --primary: white;
+  --primary-light: white;
+  --background: white;
+  --background-light: #0d171e;
+  --text: #0d171e;
+  --footer-text: white;
 
   --scrollbar-background-color: var(--black);
   --scrollbar-thumb-color: var(--white);
@@ -148,26 +150,16 @@ button img {
   margin-right: 12px;
 }
 
-/* .button-secondary {
-  background-color: transparent;
+.button-secondary {
+  background-color: var(--black);
   color: var(--white);
+  padding: 8px 15px;
 }
-
-.button-tertiary {
-  background-color: transparent;
-  color: var(--white);
-  border: none;
-} */
 
 button:hover,
 nav a:hover {
   text-decoration: underline;
 }
-
-/* button,
-.button-secondary:hover {
-  color: var(--black);
-} */
 
 img {
   vertical-align: middle;
@@ -190,7 +182,7 @@ select {
   transform: translateY(-0.125rem);
   outline: 0;
   cursor: pointer;
-  color: var(--black);
+  color: var(--text);
   /* -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; */
@@ -247,22 +239,22 @@ header {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px var(--actual-padding-side);
+  padding: 10px 40px;
 }
 
 header div {
   display: flex;
   align-items: center;
-  width: 80px;
+  min-width: 80px;
 }
 
 .select-icon {
-  margin-right: 10px;
+  margin-right: 5px;
   margin-bottom: 1px;
 }
 
@@ -270,11 +262,14 @@ header button {
   margin-left: 45px;
 }
 
-#content > nav {
+header nav {
   display: flex;
   flex: 1;
-  color: var(--black);
-  margin-top: 20%;
+  color: var(--text);
+}
+
+header nav > a {
+  text-align: center;
 }
 
 #content-header {
@@ -294,7 +289,7 @@ footer {
 
 footer p,
 footer small {
-  color: var(--white);
+  color: var(--footer-text);
 }
 
 .footer-head {
@@ -337,19 +332,70 @@ footer .links > * {
   margin-right: 34px;
 }
 
-.tag {
-  background-color: var(--tag-background);
-  padding: 4px 25px;
-  border-radius: 20px;
-  color: var(--white);
-  font-family: var(--font-small);
-  font-weight: 600;
-  display: inline-flex;
-  margin-bottom: 10px;
+.vip-switch,
+.vip-indicator {
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.vip-indicator img {
+  width: 15px;
+  margin-left: 5px;
+}
+
+.vip-overlay {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000000ee;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+}
+
+.vip-overlay-content {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
-.tag img {
-  margin-right: 5px;
+
+.vip-overlay img {
+  position: absolute;
+  right: var(--actual-padding-side);
+  top: 3%;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.vip-overlay h2 {
+  color: var(--white);
+}
+
+.vip-overlay input {
+  margin-top: 40px;
+  padding: 10px;
+}
+
+.vip-overlay button,
+.vip-overlay input {
+  width: 100%;
+}
+
+.vip-overlay button {
+  padding: 15px 0;
+  margin-top: 40px;
+}
+
+input:focus-visible {
+  outline: 1px solid var(--primary);
+}
+
+.error {
+  color: #b00020;
+  width: 100%;
+  margin-top: 4px;
 }
 
 @media screen and (max-width: 565px) {

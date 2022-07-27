@@ -9,35 +9,21 @@ export default function Home() {
   const { t } = useTranslation();
 
   return (
-    <Layout hideHeader>
+    <Layout>
       <div className='hero'>
+        <div className='hero-image-container'>
+          <StaticImage className='hero-image' style={{ position: 'absolute' }} src='../images/hero.jpeg' alt='image' />
+          {/* <img id='core' src='/flowers/core2.svg' alt='core' />
+          <img id='orange' src='/flowers/orange.svg' alt='orange' />
+          <img id='light' src='/flowers/light.svg' alt='light' /> */}
+        </div>
         <div className='hero-text'>
           <div className='hero-info'>
-            <div className='hero-links'>
-              <div>
-                <Link to='/history'>Notre histoire</Link>
-                <a href='https://www.google.com' target='_blank' rel='noreferrer'>
-                  Je confirme ma présence
-                </a>
-                <Link to='/access&housing'>Accès & logement</Link>
-              </div>
-              <div>
-                <Link to='/schedule'>Programme</Link>
-                <Link to='/q&a'>FAQ</Link>
-                <Link to='/present'>Cadeaux</Link>
-              </div>
-            </div>
-            <div>
-              <h4>23.07.23</h4>
-              <h1>
-                Margarita &<br /> Bertrand
-              </h1>
-            </div>
+            <h2>23.07.23</h2>
+            <h1>
+              Margarita &<br /> Bertrand
+            </h1>
           </div>
-        </div>
-        <div className='hero-image-container'>
-          <StaticImage className='hero-image' src='../images/hero.jpeg' alt='image' />
-          <div className='hero-image-dark' />
         </div>
       </div>
     </Layout>
