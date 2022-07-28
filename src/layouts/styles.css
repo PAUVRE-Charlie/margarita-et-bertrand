@@ -8,19 +8,20 @@
   --white: #fff;
   --black: #0d171e;
   --grey-dark: #656565;
-  --grey: #b4b4b4;
+  --grey: #c9c9c9;
   --grey-light: #f4f4f4;
   /* --grey-extra-light: #eaeeee; */
-  --primary: white;
-  --primary-light: white;
-  --background: white;
-  --background-light: #0d171e;
+  --primary: #f2552c;
+  --secondary: #f5b614;
+  --tertiary: #468030;
+  --quaternary: #a81950;
+  --background: #fff4e9;
   --text: #0d171e;
   --footer-text: white;
 
   --scrollbar-background-color: var(--black);
   --scrollbar-thumb-color: var(--white);
-  --font-big: Paragon;
+  --font-big: 'Always in My Heart';
   --font-small: Poppins;
   --border: 5px solid var(--black);
   --min-padding: 50px;
@@ -30,31 +31,11 @@
 }
 
 @font-face {
-  font-family: Paragon;
-  src: local('Paragon'), url('../fonts/paragon/Paragon-Regular.otf');
+  font-family: 'Always in My Heart';
+  src: local('Always in My Heart'), url('../fonts/Always in My Heart.ttf');
   font-weight: normal;
   font-style: normal;
 }
-
-/*
-@font-face {
-  font-family: Manrope;
-  src: url('../fonts/manrope/Manrope-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: Manrope;
-  src: url('../fonts/manrope/Manrope-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: Manrope;
-  src: url('../fonts/manrope/Manrope-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-} */
 
 html,
 body {
@@ -72,7 +53,7 @@ body {
   font-weight: bold;
 }
 
-.semi-bold {
+.semibold {
   font-weight: 600;
 }
 
@@ -90,18 +71,20 @@ h4 {
 }
 
 h1 {
-  font-size: 35px;
-  line-height: 46px;
+  font-size: 80px;
+  line-height: 100px;
+  transform: translateX(-13px);
 }
 
 h2 {
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 70px;
+  line-height: 80px;
+  transform: translateX(-12px);
 }
 
 h3 {
-  font-size: 24px;
-  line-height: 42px;
+  font-size: 48px;
+  line-height: 57px;
 }
 
 h4 {
@@ -128,32 +111,29 @@ small {
   line-height: 18px;
 }
 
-button,
-nav a {
+button {
   font-weight: normal;
   font-family: var(--font-small);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 13.5px 25.5px;
+  padding: 12px 37px;
   cursor: pointer;
   max-width: 100%;
+  border-radius: 6px;
   transition: all 300ms ease;
   background: none;
   border: none;
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: 600;
 }
 
 button img {
   margin-right: 12px;
-}
-
-.button-secondary {
-  background-color: var(--black);
-  color: var(--white);
-  padding: 8px 15px;
 }
 
 button:hover,
@@ -173,6 +153,14 @@ a {
   line-height: 0px;
 }
 
+nav a {
+  font-weight: normal;
+  font-family: var(--font-small);
+  font-size: 16px;
+  line-height: 20px;
+  margin-right: 39px;
+}
+
 select {
   background-color: transparent;
   border: none;
@@ -182,7 +170,7 @@ select {
   transform: translateY(-0.125rem);
   outline: 0;
   cursor: pointer;
-  color: var(--text);
+  color: var(--white);
   /* -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; */
@@ -244,13 +232,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 40px;
+  padding: 19px 40px;
 }
 
 header div {
   display: flex;
   align-items: center;
-  min-width: 80px;
 }
 
 .select-icon {
@@ -270,6 +257,11 @@ header nav {
 
 header nav > a {
   text-align: center;
+  color: var(--grey);
+}
+
+header nav .selected {
+  color: var(--white);
 }
 
 #content-header {
@@ -279,12 +271,15 @@ header nav > a {
 }
 
 footer {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--background-light);
-  padding-top: 81px;
+  justify-content: space-between;
+  background-color: var(--primary);
   padding-bottom: 45px;
+  margin-top: 250px;
+  height: 359px;
 }
 
 footer p,
@@ -298,19 +293,12 @@ footer small {
   align-items: center;
 }
 
-.footer-head h2 {
-  margin-top: 11px;
-  margin-bottom: 18px;
-}
-
-footer .links {
-  display: flex;
-  margin-top: 90px;
-  margin-bottom: 50px;
-}
-
-footer .links > * {
-  margin: 17px;
+footer h3 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
 }
 
 .footer-bottom {
@@ -334,8 +322,13 @@ footer .links > * {
 
 .vip-switch,
 .vip-indicator {
-  margin-right: 20px;
+  margin-left: 20px;
   flex-shrink: 0;
+  margin-left: 39px;
+}
+
+.vip-indicator small {
+  color: var(--primary);
 }
 
 .vip-indicator img {
@@ -396,6 +389,24 @@ input:focus-visible {
   color: #b00020;
   width: 100%;
   margin-top: 4px;
+}
+
+.border-primary,
+.border-secondary,
+.border-tertiary,
+.border-quaternary {
+  border: solid 2px var(--primary);
+  border-radius: 12px;
+}
+
+.border-secondary {
+  border-color: var(--secondary);
+}
+.border-tertiary {
+  border-color: var(--tertiary);
+}
+.border-quaternary {
+  border-color: var(--quaternary);
 }
 
 @media screen and (max-width: 565px) {

@@ -6,6 +6,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import { useI18next } from 'gatsby-plugin-react-i18next';
 import { useTranslation } from 'react-i18next';
 import './styles.css';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const secretPassword = 'margabeber';
 
@@ -71,51 +72,38 @@ const Layout = ({ title, description, image, children }) => {
         />
       </Helmet>
       <header>
-        <div />
-        {/* <StaticImage src='../images/logo.svg' className='logo' height={65} quality={100} placeholder='blurred' alt='logo' /> */}
         <div>
           <nav>
-            <Link to='/' className={`${isBrowser() && window?.location.pathname === '/' ? 'bold' : ''}`}>
-              {t('Accueil')} 🤗
+            <Link to='/' className={`${isBrowser() && window?.location.pathname === '/' ? 'selected' : ''}`}>
+              {t('Accueil')}
             </Link>
-            <Link to='/history' className={`${isBrowser() && window?.location.pathname === '/history' ? 'bold' : ''}`}>
-              {t('M+B')} 🇨🇴🇫🇷
+            <Link to='/history' className={`${isBrowser() && window?.location.pathname === '/history' ? 'selected' : ''}`}>
+              {t('M+B')}
             </Link>
             <a
               href={language === 'es' ? 'https://form.jotform.com/222051678450352' : 'https://form.jotform.com/222052491788057'}
               target='_blank'
               rel='noreferrer'
             >
-              {t('RSVP')} ✅
+              {t('RSVP')}
             </a>
-            <Link to='/access&housing' className={`${isBrowser() && window?.location.pathname === '/access&housing' ? 'bold' : ''}`}>
-              {t('Accès & logement')} ✈️🛏
+            <Link to='/access&housing' className={`${isBrowser() && window?.location.pathname === '/access&housing' ? 'selected' : ''}`}>
+              {t('Accès & logement')}
             </Link>
-            <Link to='/schedule' className={`${isBrowser() && window?.location.pathname === '/schedule' ? 'bold' : ''}`}>
-              {t('Programme')} 📆
+            <Link to='/schedule' className={`${isBrowser() && window?.location.pathname === '/schedule' ? 'selected' : ''}`}>
+              {t('Programme')}
             </Link>
-            <Link to='/q&a' className={`${isBrowser() && window?.location.pathname === '/q&a' ? 'bold' : ''}`}>
-              {t('FAQ')} 🤔
+            <Link to='/q&a' className={`${isBrowser() && window?.location.pathname === '/q&a' ? 'selected' : ''}`}>
+              {t('FAQ')}
             </Link>
-            <Link to='/present' className={`${isBrowser() && window?.location.pathname === '/present' ? 'bold' : ''}`}>
-              {t('Cadeaux')} 🎁🏖
+            <Link to='/present' className={`${isBrowser() && window?.location.pathname === '/present' ? 'selected' : ''}`}>
+              {t('Cadeaux')}
             </Link>
           </nav>
         </div>
         <div>
-          {isVIP ? (
-            <div className='vip-indicator'>
-              <small>VIP</small>
-              <img src='/icons/check.svg' />
-            </div>
-          ) : (
-            <button className='vip-switch button-secondary' onClick={() => setShowVIPOverlay(true)}>
-              Je suis VIP
-            </button>
-          )}
           <div>
-            <img src='/icons/world.svg' className='select-icon' alt='language icon' />
-            <select name='language' value={language} onChange={e => changeLanguage(e.target.value)} className='bold'>
+            <select name='language' value={language} onChange={e => changeLanguage(e.target.value)} className='selected'>
               {languages.map(l => (
                 <option key={l} value={l}>
                   {l.toUpperCase()}
@@ -123,17 +111,22 @@ const Layout = ({ title, description, image, children }) => {
               ))}
             </select>
           </div>
+          {isVIP ? (
+            <div className='vip-indicator'>
+              <small>VIP</small>
+              <img src='/icons/check.svg' />
+            </div>
+          ) : (
+            <button className='vip-switch' onClick={() => setShowVIPOverlay(true)}>
+              Je suis VIP
+            </button>
+          )}
         </div>
       </header>
       <div id='content'>{children}</div>
       <footer>
-        <div className='footer-head with-margins'>
-          {/* <small>{t('Pr^?')}</small>
-          <h2>{t('Fait partie des premiers !')}</h2>
-          <a href='https://form.jotform.com/221335802939054' target='_blank' rel='noreferrer'>
-            <button>{t('Je rejoins la bêta !')}</button>
-          </a> */}
-        </div>
+        <img className='footer-head' src='/flowers/footer.svg'></img>
+        <h3>{t('À très bientôt !')}</h3>
         <div className='footer-bottom with-margins'>
           <a href='mailto:chpauvre@gmail.com' target='_blank' rel='noreferrer'>
             <small>{t('Contactez-nous')}</small>
@@ -154,9 +147,7 @@ const Layout = ({ title, description, image, children }) => {
               name='password'
             />
             {vipError && <small className='error'>{t('Wrong password')}</small>}
-            <button type='submit' className='button-secondary'>
-              Confirmer
-            </button>
+            <button type='submit'>Confirmer</button>
           </form>
         </div>
       )}

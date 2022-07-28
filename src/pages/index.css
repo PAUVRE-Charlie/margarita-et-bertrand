@@ -4,6 +4,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
+  position: relative;
 }
 
 .hero-image-container {
@@ -15,63 +16,113 @@
 
 .hero-image {
   position: relative;
-  right: calc(var(--actual-padding-side) + 5%);
-  bottom: 9vh;
-  width: 50%;
-  height: 75%;
-  opacity: 0.9;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-position: 50% 5%;
   box-shadow: 0 0 50px 50px white inset;
 }
 
-#core,
-#light,
-#orange {
+.hero-overlay {
+  background-color: black;
+  opacity: 39%;
   position: absolute;
-}
-
-#light {
-  bottom: 0;
-  right: 3%;
-  height: 37%;
-}
-
-#orange {
-  top: 0%;
-  left: 1%;
-  height: 22%;
-}
-
-#core {
-  left: 11%;
-  top: 35%;
-  height: 25%;
+  inset: 0;
 }
 
 .hero-text {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: calc(9vh - 24px) var(--actual-padding-side);
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hero-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .hero-info h2,
 .hero-info h1 {
-  color: var(--text);
+  color: var(--white);
 }
 
-.hero-info h1 {
-  margin-top: 20px;
-  font-size: 70px;
-  line-height: 90px;
+.hero-tag {
+  display: grid;
+  background: var(--secondary);
+  border-radius: 100px;
+  transform: rotate(-3.27deg);
+  place-items: center;
+  padding: 5px 30px;
+}
+
+.hero-info h4 {
+  font-weight: 600;
+  font-family: var(--font-small);
+  color: var(--white);
+  margin-top: 15%;
+}
+
+.hero-flower-left,
+.hero-flower-right {
+  position: absolute;
+}
+
+.hero-flower-left {
+  left: 0;
+  width: 20%;
+  top: 40%;
+}
+
+.hero-flower-right {
+  right: -2%;
+  width: 20%;
+  top: 55%;
+  transform: scaleX(-1);
+}
+
+.celebration {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  margin-top: 168px;
+}
+
+.celebration-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.celebration-text > p {
+  margin: 39px 0 74px 0;
+}
+
+.celebration .indications {
+  display: flex;
+  align-items: center;
+}
+
+.celebration .indication {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.celebration .indication img {
+  margin-right: 10px;
+}
+
+.celebration-image {
+  height: 100%;
+  width: 45%;
+  margin-left: 90px;
+}
+
+.celebration button {
+  margin-top: 39px;
+  padding: 18px;
 }
