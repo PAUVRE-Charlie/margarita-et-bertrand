@@ -9,8 +9,6 @@ export const IsVIPContext = React.createContext({
 export const IsVIPProvider = ({ children }) => {
   const [isVIP, setIsVIP] = useState(false);
 
-  console.log(isVIP);
-
   const toggleIsVIP = () => setIsVIP(!isVIP);
   return <IsVIPContext.Provider value={{ isVIP, toggleIsVIP }}>{children}</IsVIPContext.Provider>;
 };

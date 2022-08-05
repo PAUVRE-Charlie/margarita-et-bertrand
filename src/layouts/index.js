@@ -13,7 +13,7 @@ const secretPassword = 'margabeber';
 const LayoutContent = ({ title, description, image, children }) => {
   const { pathname } = useLocation();
   const { languages, language, changeLanguage } = useI18next();
-  const { t } = useTranslation();
+  const { t } = useTranslation('layout');
   const { site } = useStaticQuery(query);
   const { defaultTitle, defaultDescription, defaultImage, siteUrl } = site.siteMetadata;
   const seo = {
@@ -115,7 +115,7 @@ const LayoutContent = ({ title, description, image, children }) => {
               to='/present'
               className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/present' ? 'selected' : ''}`}
             >
-              {t('Cadeaux')}
+              {t('Cadeau')}
             </Link>
           </nav>
         </div>
@@ -136,7 +136,7 @@ const LayoutContent = ({ title, description, image, children }) => {
             </div>
           ) : (
             <button className='vip-switch' onClick={() => setShowVIPOverlay(true)}>
-              Je suis VIP
+              {t('Je suis VIP')}
             </button>
           )}
         </div>
@@ -165,7 +165,7 @@ const LayoutContent = ({ title, description, image, children }) => {
               name='password'
             />
             {vipError && <small className='error'>{t('Wrong password')}</small>}
-            <button type='submit'>Confirmer</button>
+            <button type='submit'>{t('Confirmer')}</button>
           </form>
         </div>
       )}

@@ -8,7 +8,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import useIsVIP from '../../components/vipProvider';
 
 const ScheduleDays = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('schedule');
 
   const { isVIP } = useIsVIP();
 

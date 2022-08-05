@@ -42,7 +42,7 @@ const HistoryItem = ({ reverse, title, description, color }) => {
 };
 
 export default function History() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('history');
 
   return (
     <Layout>

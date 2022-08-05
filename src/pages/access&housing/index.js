@@ -8,14 +8,14 @@ import useIsVIP from '../../components/vipProvider';
 import { StaticImage } from 'gatsby-plugin-image';
 
 export default function AccessHousing() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('accesshousing');
 
   return (
     <Layout>
       <PageTitle t={t} page={Pages.AccessHousing} />
       <div className='localisation with-margins'>
         <h4>{t('Localisation')}</h4>
-        <p>{t('Le mariage aura lieu au Château le Chereau, au sud d’Orléans, à 2 H de Paris et 25 minutes de Blois ')}</p>
+        <p>{t("Le mariage aura lieu au Château le Chereau, au sud d'Orléans, à 2 H de Paris et 25 minutes de Blois")}</p>
       </div>
       <div className='access with-margins'>
         <h4>{t('Accès')}</h4>
@@ -33,7 +33,7 @@ export default function AccessHousing() {
             />
             <div className='access-card-content'>
               <h4>{t('Avion')}</h4>
-              <small>{t('Les aéroports les plus proches sont les aéroports de Paris et l’aéroport de Tours-Val de Loire')}</small>
+              <small>{t("Les aéroports les plus proches sont les aéroports de Paris et l'aéroport de Tours-Val de Loire")}</small>
             </div>
           </a>
           <a
@@ -50,7 +50,7 @@ export default function AccessHousing() {
             <div className='access-card-content'>
               <h4>{t('Voiture')}</h4>
               <small>
-                {t('Le Château le Chereau se trouve à 2 heures de Paris, 50 minutes d’Orléans et à 30 minutes de Blois en voiture.')}
+                {t("Le Château le Chereau se trouve à 2 heures de Paris, 50 minutes d'Orléans et à 30 minutes de Blois en voiture.")}
               </small>
             </div>
           </a>
@@ -59,6 +59,9 @@ export default function AccessHousing() {
       </div>
       <div className='housing with-margins'>
         <h4>{t('Logement')}</h4>
+        <small style={{ fontStyle: 'italic', color: 'grey', marginTop: '10px', display: 'block' }}>
+          {t("Nous proposons certains logements, mais vous pouvez trouver d'autres choix proches du Château le Chereau")}
+        </small>
         <h5>{t('Hôtels')}</h5>
         <div className='housing-cards'>
           <a className='housing-card border-tertiary' href='https://www.chateaudelagiraudiere.fr' target='_blank' rel='noreferrer'>
@@ -69,7 +72,7 @@ export default function AccessHousing() {
             />
             <div className='housing-card-content'>
               <h4>{t('Château de la Giraudière')}</h4>
-              <small>{t('8 km – 12 minutes')}</small>
+              <small>{t('8 km - 12 minutes')}</small>
             </div>
           </a>
           <a className='housing-card border-quaternary' href='https://www.laborde-sologne.fr' target='_blank' rel='noreferrer'>
@@ -80,11 +83,11 @@ export default function AccessHousing() {
             />
             <div className='housing-card-content'>
               <h4>{t('La Borde en Sologne')}</h4>
-              <small>{t('9 km – 10 minutes')}</small>
+              <small>{t('9 km - 10 minutes')}</small>
             </div>
           </a>
         </div>
-        <h5>{t('Gîtes et Chambres d’hôtes')}</h5>
+        <h5>{t("Gîtes et Chambres d'hôtes")}</h5>
         <div className='housing-cards'>
           <a className='housing-card border-primary' href='https://harasdegarrypierre.fr' target='_blank' rel='noreferrer'>
             <StaticImage
@@ -94,7 +97,7 @@ export default function AccessHousing() {
             />
             <div className='housing-card-content'>
               <h4>{t('Haras de Garrypierre')}</h4>
-              <small>{t('11km – 14 minutes')}</small>
+              <small>{t('11km - 14 minutes')}</small>
             </div>
           </a>
           <a
@@ -110,18 +113,18 @@ export default function AccessHousing() {
             />
             <div className='housing-card-content'>
               <h4>{t('La Gauchere')}</h4>
-              <small>{t('2,8 km – 6 minutes')}</small>
+              <small>{t('2,8 km - 6 minutes')}</small>
             </div>
           </a>
           <a className='housing-card border-tertiary' href='https://www.lamaisondetelaime.com' target='_blank' rel='noreferrer'>
             <StaticImage
-              alt='La maison de Tel’Aime'
+              alt="La maison de Tel'Aime"
               src='https://static.wixstatic.com/media/0dda93_1708d9689c6143a8bf7eedd7e2ad58ab~mv2.jpg/v1/fill/w_831,h_725,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_auto/0dda93_1708d9689c6143a8bf7eedd7e2ad58ab~mv2.jpg'
               className='housing-card-image'
             />
             <div className='housing-card-content'>
-              <h4>{t('La maison de Tel’Aime')}</h4>
-              <small>{t('2,3 km – 4 minutes')}</small>
+              <h4>{t("La maison de Tel'Aime")}</h4>
+              <small>{t('2,3 km - 4 minutes')}</small>
             </div>
           </a>
           <a
@@ -137,7 +140,7 @@ export default function AccessHousing() {
             />
             <div className='housing-card-content'>
               <h4>{t('Gîte communal')}</h4>
-              <small>{t('2,3 km – 4 minutes')}</small>
+              <small>{t('2,3 km - 4 minutes')}</small>
             </div>
           </a>
           <a className='housing-card border-primary' href='https://www.chambreslestilleuls.fr' target='_blank' rel='noreferrer'>
@@ -148,7 +151,7 @@ export default function AccessHousing() {
             />
             <div className='housing-card-content'>
               <h4>{t('Les Tilleuls')}</h4>
-              <small>{t('7,7 km – 10 minutes')}</small>
+              <small>{t('7,7 km - 10 minutes')}</small>
             </div>
           </a>
         </div>

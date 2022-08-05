@@ -4,9 +4,12 @@ import { Trans, useTranslation } from 'react-i18next';
 import { graphql, Link } from 'gatsby';
 import './index.css';
 import { StaticImage } from 'gatsby-plugin-image';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('home');
+
+  const { language } = useI18next();
 
   return (
     <Layout>
@@ -25,7 +28,7 @@ export default function Home() {
           <div className='hero-info'>
             <h1>Margarita & Betrand</h1>
             <div className='hero-tag'>
-              <h2>se marient</h2>
+              <h2>{t('se marient')}</h2>
             </div>
             <h5 className='semibold'>{t('Rendez-vous le 23 Juillet 2023 au Chateau le Cherreau')}</h5>
           </div>
@@ -49,7 +52,16 @@ export default function Home() {
               <p className='semibold'>{t('Samedi 3 juin 2023')}</p>
             </div>
           </div>
-          <button>{t('Confirmez votre présence')}</button>
+          <button
+            onClick={() =>
+              window.open(
+                language === 'es' ? 'https://form.jotform.com/222162111714340' : 'https://form.jotform.com/222052491788057',
+                '_blank'
+              )
+            }
+          >
+            {t('Confirmez votre présence')}
+          </button>
         </div>
         <StaticImage className='celebration-image border-secondary' src='../images/home.jpeg' alt='couple image' />
         <img className='celebration-flower' src='/flowers/flower1.svg' alt='flower' />

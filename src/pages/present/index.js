@@ -6,7 +6,7 @@ import './index.css';
 import PageTitle, { Pages } from '../../components/pageTitle';
 
 export default function Present() {
-  const { t } = useTranslation();
+  const { t } = useTranslation('present');
 
   return (
     <Layout>
