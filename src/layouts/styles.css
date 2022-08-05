@@ -19,8 +19,8 @@
   --text: #0d171e;
   --footer-text: white;
 
-  --scrollbar-background-color: var(--black);
-  --scrollbar-thumb-color: var(--white);
+  --scrollbar-background-color: var(--background);
+  --scrollbar-thumb-color: var(--primary);
   --font-big: 'Always in My Heart';
   --font-small: Poppins;
   --border: 5px solid var(--black);
@@ -61,6 +61,12 @@ body {
   text-transform: uppercase;
 }
 
+iframe {
+  max-width: 800px;
+  margin: 100px 0;
+  border-radius: 12px;
+}
+
 h1,
 h2,
 h3,
@@ -85,16 +91,19 @@ h2 {
 h3 {
   font-size: 48px;
   line-height: 57px;
+  transform: translateX(-10px);
 }
 
 h4 {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 600;
+  font-size: 35px;
+  line-height: 50px;
+  transform: translateX(-8px);
 }
 
+h5,
 p,
 small,
+a,
 button {
   color: var(--black);
   font-weight: normal;
@@ -103,12 +112,18 @@ button {
 
 p {
   font-size: 17px;
-  line-height: 30px;
+  line-height: 24px;
 }
 
 small {
   font-size: 14px;
   line-height: 18px;
+}
+
+h5 {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 button {
@@ -151,6 +166,10 @@ a {
   text-decoration: inherit;
   cursor: pointer;
   line-height: 0px;
+}
+
+a:hover {
+  color: var(--grey);
 }
 
 nav a {
@@ -278,7 +297,6 @@ footer {
   justify-content: space-between;
   background-color: var(--primary);
   padding-bottom: 45px;
-  margin-top: 250px;
   height: 359px;
 }
 
@@ -397,16 +415,21 @@ input:focus-visible {
 .border-quaternary {
   border: solid 2px var(--primary);
   border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--primary);
 }
 
 .border-secondary {
   border-color: var(--secondary);
+  background-color: var(--secondary);
 }
 .border-tertiary {
   border-color: var(--tertiary);
+  background-color: var(--tertiary);
 }
 .border-quaternary {
   border-color: var(--quaternary);
+  background-color: var(--quaternary);
 }
 
 @media screen and (max-width: 565px) {

@@ -6,11 +6,11 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import { useI18next } from 'gatsby-plugin-react-i18next';
 import { useTranslation } from 'react-i18next';
 import './styles.css';
-import { StaticImage } from 'gatsby-plugin-image';
+import useIsVIP, { IsVIPProvider } from '../components/vipProvider';
 
 const secretPassword = 'margabeber';
 
-const Layout = ({ title, description, image, children }) => {
+const LayoutContent = ({ title, description, image, children }) => {
   const { pathname } = useLocation();
   const { languages, language, changeLanguage } = useI18next();
   const { t } = useTranslation();
@@ -29,17 +29,18 @@ const Layout = ({ title, description, image, children }) => {
   const [vipPasswordValue, setVIPPasswordValue] = useState('');
   const [vipError, setVIPError] = useState(false);
 
+  const { isVIP, toggleIsVIP } = useIsVIP();
+
   const submitVIPForm = e => {
     e.preventDefault();
-    if (vipPasswordValue === secretPassword) setShowVIPOverlay(false);
-    else {
+    if (vipPasswordValue === secretPassword) {
+      toggleIsVIP();
+      setShowVIPOverlay(false);
+    } else {
       setVIPError(true);
       setVIPPasswordValue('');
     }
   };
-
-  const isVIP = vipPasswordValue === secretPassword;
-
   return (
     <div id='app' style={showVIPOverlay ? { height: '100vh' } : {}}>
       <Helmet
@@ -66,37 +67,54 @@ const Layout = ({ title, description, image, children }) => {
         <meta name='theme-color' content='#ffffff' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-        <link
-          href='https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Poppins:ital,wght@0,400;1,700&display=swap'
-          rel='stylesheet'
-        />
+        <link href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap' rel='stylesheet' />
       </Helmet>
       <header>
         <div>
           <nav>
-            <Link to='/' className={`${isBrowser() && window?.location.pathname === '/' ? 'selected' : ''}`}>
+            <Link
+              to='/'
+              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/' ? 'selected' : ''}`}
+            >
               {t('Accueil')}
             </Link>
-            <Link to='/history' className={`${isBrowser() && window?.location.pathname === '/history' ? 'selected' : ''}`}>
+            <Link
+              to='/history'
+              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/history' ? 'selected' : ''}`}
+            >
               {t('M+B')}
             </Link>
             <a
-              href={language === 'es' ? 'https://form.jotform.com/222051678450352' : 'https://form.jotform.com/222052491788057'}
+              href={language === 'es' ? 'https://form.jotform.com/222162111714340' : 'https://form.jotform.com/222052491788057'}
               target='_blank'
               rel='noreferrer'
             >
               {t('RSVP')}
             </a>
-            <Link to='/access&housing' className={`${isBrowser() && window?.location.pathname === '/access&housing' ? 'selected' : ''}`}>
+            <Link
+              to='/access&housing'
+              className={`${
+                isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/access&housing' ? 'selected' : ''
+              }`}
+            >
               {t('Accès & logement')}
             </Link>
-            <Link to='/schedule' className={`${isBrowser() && window?.location.pathname === '/schedule' ? 'selected' : ''}`}>
+            <Link
+              to='/schedule'
+              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/schedule' ? 'selected' : ''}`}
+            >
               {t('Programme')}
             </Link>
-            <Link to='/q&a' className={`${isBrowser() && window?.location.pathname === '/q&a' ? 'selected' : ''}`}>
+            <Link
+              to='/q&a'
+              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/q&a' ? 'selected' : ''}`}
+            >
               {t('FAQ')}
             </Link>
-            <Link to='/present' className={`${isBrowser() && window?.location.pathname === '/present' ? 'selected' : ''}`}>
+            <Link
+              to='/present'
+              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/present' ? 'selected' : ''}`}
+            >
               {t('Cadeaux')}
             </Link>
           </nav>
@@ -128,7 +146,7 @@ const Layout = ({ title, description, image, children }) => {
         <img className='footer-head' src='/flowers/footer.svg'></img>
         <h3>{t('À très bientôt !')}</h3>
         <div className='footer-bottom with-margins'>
-          <a href='mailto:chpauvre@gmail.com' target='_blank' rel='noreferrer'>
+          <a href='mailto:margarita.ovalle21@gmail.com' target='_blank' rel='noreferrer'>
             <small>{t('Contactez-nous')}</small>
           </a>
           <small>Copyright © 2022. Margarita & Bertrand. All rights reserved.</small>
@@ -154,6 +172,15 @@ const Layout = ({ title, description, image, children }) => {
     </div>
   );
 };
+
+const Layout = ({ title, description, image, children }) => {
+  return (
+    <IsVIPProvider>
+      <LayoutContent {...{ title, description, image, children }} />
+    </IsVIPProvider>
+  );
+};
+
 export default Layout;
 
 Layout.propTypes = {

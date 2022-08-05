@@ -1,0 +1,51 @@
+.days {
+  margin-top: 30px;
+  margin-bottom: 250px;
+}
+
+.day {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin-top: 85px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-item {
+  margin-top: 31px;
+}
+
+.schedule-item h5 {
+  margin-bottom: 5px;
+}
+
+.schedule-item a {
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.day-image-container {
+  flex: 1;
+}
+
+.day-image {
+  max-height: 70vh;
+  min-height: 40vh;
+  width: 100%;
+}
+
+.day .margin-left {
+  margin-left: 70px;
+}
+
+.day .margin-right {
+  margin-right: 70px;
+}
+
+.schedule-flower {
+  position: absolute;
+  top: -60px;
+  left: calc(-1 * var(--actual-padding-side) - 20px);
+  transform: scaleX(-1);
+}

@@ -1,0 +1,22 @@
+.page-title {
+  position: relative;
+  height: 50vh;
+  width: 100%;
+  place-items: center;
+  display: grid;
+}
+
+.page-title-image,
+.page-title-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.page-title-overlay {
+  background-color: #00000040;
+}
+
+.page-title h1 {
+  color: var(--white);
+  margin-top: 30px;
+}

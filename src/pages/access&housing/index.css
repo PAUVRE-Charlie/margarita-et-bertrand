@@ -1,0 +1,88 @@
+.localisation {
+  margin-top: 66px;
+  width: 100%;
+}
+
+.access {
+  width: 100%;
+  margin-top: 66px;
+  position: relative;
+}
+
+.access-cards {
+  display: flex;
+  margin-top: 17px;
+}
+
+.access-card {
+  height: 21rem;
+  width: 19rem;
+  margin-right: 67px;
+  background-color: var(--white);
+}
+
+.access-card:last-child {
+  margin-right: 0;
+}
+
+.access-card-content {
+  padding: 20px 35px;
+}
+
+.access-card-content h4 {
+  font-size: 30px;
+  line-height: 40px;
+  margin-bottom: 5px;
+}
+
+.access-card-image {
+  height: 50%;
+}
+
+.housing {
+  width: 100%;
+  margin-top: 66px;
+  margin-bottom: 250px;
+}
+
+.housing-cards {
+  display: flex;
+  margin-top: 17px;
+  flex-wrap: wrap;
+}
+
+.housing-card {
+  height: 19rem;
+  width: 20rem;
+  margin-right: 67px;
+  background-color: var(--white);
+  margin-bottom: 20px;
+}
+
+.housing-card:last-child {
+  margin-right: 0;
+}
+
+.housing-card-content {
+  padding: 20px 35px;
+}
+
+.housing-card-content h4 {
+  font-size: 30px;
+  line-height: 40px;
+  margin-bottom: 5px;
+}
+
+.housing-card-image {
+  height: 60%;
+}
+
+.housing h5 {
+  margin-top: 20px;
+}
+
+.access-flower {
+  position: absolute;
+  top: 60px;
+  right: calc(-1 * var(--actual-padding-side) + 30px);
+}

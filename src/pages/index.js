@@ -17,7 +17,7 @@ export default function Home() {
             style={{ position: 'absolute' }}
             src='../images/hero.jpg'
             alt='image'
-            objectPosition='50% 70%'
+            objectPosition='58% 45%'
           />
           <div className='hero-overlay' />
         </div>
@@ -27,7 +27,7 @@ export default function Home() {
             <div className='hero-tag'>
               <h2>se marient</h2>
             </div>
-            <h4>Rendez-vous le 23 Juillet 2023 au Chateau le Cherreau</h4>
+            <h5 className='semibold'>{t('Rendez-vous le 23 Juillet 2023 au Chateau le Cherreau')}</h5>
           </div>
         </div>
         <img className='hero-flower-left' src='/flowers/flower2.svg' />
@@ -36,11 +36,7 @@ export default function Home() {
       <div className='celebration with-margins'>
         <div className='celebration-text'>
           <h3>{t('Nous célébrons notre mariage et nous voulons que vous nous accompagniez !')}</h3>
-          <p>
-            {t(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus, non integer nunc nisl. Hendrerit suspendisse mauris posuere facilisis diam pulvinar nunc cras. Iaculis in dignissim morbi nisi, nec massa netus enim egestas. Tortor libero vitae viverra dictum at pharetra volutpat libero.'
-            )}
-          </p>
+          <p>{t('Bienvenue sur notre site web où vous trouverez plus de détails sur notre mariage.')}</p>
           <div className='indications'>
             <a href='https://goo.gl/maps/ZCx2fJgo2KBT6KVc7' target='_blank' rel='noreferrer'>
               <div className='indication'>
@@ -53,9 +49,10 @@ export default function Home() {
               <p className='semibold'>{t('Samedi 3 juin 2023')}</p>
             </div>
           </div>
-          <button>{t('Je serais présent.e !')}</button>
+          <button>{t('Confirmez votre présence')}</button>
         </div>
-        <StaticImage className='celebration-image border-secondary' src='../images/home.jpeg' />
+        <StaticImage className='celebration-image border-secondary' src='../images/home.jpeg' alt='couple image' />
+        <img className='celebration-flower' src='/flowers/flower1.svg' alt='flower' />
       </div>
     </Layout>
   );
