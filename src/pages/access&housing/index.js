@@ -89,7 +89,7 @@ export default function AccessHousing() {
         </div>
         <h5>{t("Gîtes et Chambres d'hôtes")}</h5>
         <div className='housing-cards'>
-          <a className='housing-card border-primary' href='https://harasdegarrypierre.fr' target='_blank' rel='noreferrer'>
+          {/* <a className='housing-card border-primary' href='https://harasdegarrypierre.fr' target='_blank' rel='noreferrer'>
             <StaticImage
               alt='Haras de Garrypierre'
               src='https://harasdegarrypierre.fr/wp-content/uploads/2021/11/Gite-du-haras-de-garrypierre-Ferme-du-Garry-88.jpg'
@@ -99,7 +99,7 @@ export default function AccessHousing() {
               <h4>{t('Haras de Garrypierre')}</h4>
               <small>{t('11km - 14 minutes')}</small>
             </div>
-          </a>
+          </a> */}
           <a
             className='housing-card border-secondary'
             href='https://la-gauchere-montrieux-en-sologne.hotelmix.fr/?_ga=2.46033639.238013354.1658854412-202248.1658854412'

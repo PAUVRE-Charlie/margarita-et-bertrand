@@ -26,11 +26,11 @@ export default function Home() {
         </div>
         <div className='hero-text'>
           <div className='hero-info'>
-            <h1>Margarita & Betrand</h1>
+            <h1>Margarita & Bertrand</h1>
             <div className='hero-tag'>
               <h2>{t('se marient')}</h2>
             </div>
-            <h5 className='semibold'>{t('Rendez-vous le 23 Juillet 2023 au Chateau le Cherreau')}</h5>
+            <h5 className='semibold'>{t('Rendez-vous le 3 Juin 2023 au Château le Chereau')}</h5>
           </div>
         </div>
         <img className='hero-flower-left' src='/flowers/flower2.svg' />

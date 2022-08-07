@@ -1,6 +1,7 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import './index.css';
+import { graphql } from 'gatsby';
 
 export const Pages = {
   AccessHousing: 'Accès et logement',

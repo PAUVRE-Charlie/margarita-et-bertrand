@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useLocation } from '@reach/router';
@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import './styles.css';
 import useIsVIP, { IsVIPProvider } from '../components/vipProvider';
 
-const secretPassword = 'margabeber';
+const secretPassword = 'Blois0306';
 
 const LayoutContent = ({ title, description, image, children }) => {
   const { pathname } = useLocation();
@@ -35,12 +35,22 @@ const LayoutContent = ({ title, description, image, children }) => {
     e.preventDefault();
     if (vipPasswordValue === secretPassword) {
       toggleIsVIP();
+      localStorage.setItem('codevalideVIP', 'true');
       setShowVIPOverlay(false);
     } else {
       setVIPError(true);
       setVIPPasswordValue('');
     }
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('codevalideVIP')) toggleIsVIP();
+  }, []);
+
+  const isPageSelected = page =>
+    (isBrowser() && window?.location.pathname === (language === 'es' ? '/es/' : '/') + page) ||
+    (isBrowser() && window?.location.pathname === (language === 'es' ? '/es/' : '/') + page + '/');
+
   return (
     <div id='app' style={showVIPOverlay ? { height: '100vh' } : {}}>
       <Helmet
@@ -72,16 +82,10 @@ const LayoutContent = ({ title, description, image, children }) => {
       <header>
         <div>
           <nav>
-            <Link
-              to='/'
-              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/' ? 'selected' : ''}`}
-            >
+            <Link to='/' className={`${isPageSelected('') ? 'selected' : ''}`}>
               {t('Accueil')}
             </Link>
-            <Link
-              to='/history'
-              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/history' ? 'selected' : ''}`}
-            >
+            <Link to='/history' className={`${isPageSelected('history') ? 'selected' : ''}`}>
               {t('M+B')}
             </Link>
             <a
@@ -91,30 +95,16 @@ const LayoutContent = ({ title, description, image, children }) => {
             >
               {t('RSVP')}
             </a>
-            <Link
-              to='/access&housing'
-              className={`${
-                isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/access&housing' ? 'selected' : ''
-              }`}
-            >
+            <Link to='/access&housing' className={`${isPageSelected('access&housing') ? 'selected' : ''}`}>
               {t('Accès & logement')}
             </Link>
-            <Link
-              to='/schedule'
-              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/schedule' ? 'selected' : ''}`}
-            >
+            <Link to='/schedule' className={`${isPageSelected('schedule') ? 'selected' : ''}`}>
               {t('Programme')}
             </Link>
-            <Link
-              to='/q&a'
-              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/q&a' ? 'selected' : ''}`}
-            >
+            <Link to='/q&a' className={`${isPageSelected('q&a') ? 'selected' : ''}`}>
               {t('FAQ')}
             </Link>
-            <Link
-              to='/present'
-              className={`${isBrowser() && window?.location.pathname === (language === 'es' ? '/es' : '') + '/present' ? 'selected' : ''}`}
-            >
+            <Link to='/present' className={`${isPageSelected('present') ? 'selected' : ''}`}>
               {t('Cadeau')}
             </Link>
           </nav>
@@ -131,12 +121,12 @@ const LayoutContent = ({ title, description, image, children }) => {
           </div>
           {isVIP ? (
             <div className='vip-indicator'>
-              <small>VIP</small>
+              <small>{t('Code valide')}</small>
               <img src='/icons/check.svg' />
             </div>
           ) : (
             <button className='vip-switch' onClick={() => setShowVIPOverlay(true)}>
-              {t('Je suis VIP')}
+              {t("J'ai un code")}
             </button>
           )}
         </div>
@@ -146,7 +136,7 @@ const LayoutContent = ({ title, description, image, children }) => {
         <img className='footer-head' src='/flowers/footer.svg'></img>
         <h3>{t('À très bientôt !')}</h3>
         <div className='footer-bottom with-margins'>
-          <a href='mailto:margarita.ovalle21@gmail.com' target='_blank' rel='noreferrer'>
+          <a href='https://www.instagram.com/margaritaetbertrand030623/' target='_blank' rel='noreferrer'>
             <small>{t('Contactez-nous')}</small>
           </a>
           <small>Copyright © 2022. Margarita & Bertrand. All rights reserved.</small>
@@ -156,7 +146,7 @@ const LayoutContent = ({ title, description, image, children }) => {
         <div className='vip-overlay'>
           <form onSubmit={submitVIPForm} className='vip-overlay-content'>
             <img onClick={() => setShowVIPOverlay(false)} src='/icons/close.svg' alt='close' />
-            <h2>{t('Entrez le mot de passe')}</h2>
+            <h2>{t('Entrez le code')}</h2>
             <input
               value={vipPasswordValue}
               onChange={e => setVIPPasswordValue(e.target.value)}

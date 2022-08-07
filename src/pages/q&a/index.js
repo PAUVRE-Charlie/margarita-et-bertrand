@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../layouts';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
 import './index.css';
 import PageTitle, { Pages } from '../../components/pageTitle';
@@ -51,6 +51,22 @@ export default function QA() {
             )}
           </small>
         </div>
+        <p className='instagramlink'>
+          <Trans
+            i18nKey='instagramLink'
+            defaults="Si vous avez d'autres questions, vous pouvez nous les poser en envoyant un message sur <instaLink>ce compte instagram!</instaLink>"
+            components={{
+              instaLink: (
+                <a
+                  style={{ textDecoration: 'underline' }}
+                  href='https://www.instagram.com/margaritaetbertrand030623/'
+                  target='_blank'
+                  rel='noreferrer'
+                />
+              ),
+            }}
+          />
+        </p>
       </div>
     </Layout>
   );

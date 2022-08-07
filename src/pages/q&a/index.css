@@ -28,3 +28,8 @@
   top: 60px;
   right: calc(-1 * var(--actual-padding-side) + 50px);
 }
+
+.instagramlink {
+  margin-top: 150px;
+  color: var(--quaternary);
+}
