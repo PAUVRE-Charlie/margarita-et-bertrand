@@ -151,7 +151,7 @@ export default function History() {
         </div>
         <div className='end-dash' />
       </div>
-      <div className='a-suivre'>
+      <div className='a-suivre with-margins'>
         <div>
           <img src='/flowers/flower3.svg' alt='flower' />
           <h3>{t('Un résumé en vidéo...')}</h3>

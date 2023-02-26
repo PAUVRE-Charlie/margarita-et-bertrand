@@ -28,6 +28,7 @@ const LayoutContent = ({ title, description, image, children }) => {
   const [showVIPOverlay, setShowVIPOverlay] = useState(false);
   const [vipPasswordValue, setVIPPasswordValue] = useState('');
   const [vipError, setVIPError] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const { isVIP, toggleIsVIP } = useIsVIP();
 
@@ -80,45 +81,43 @@ const LayoutContent = ({ title, description, image, children }) => {
         <link href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap' rel='stylesheet' />
       </Helmet>
       <header>
+        <nav>
+          <Link to='/' className={`${isPageSelected('') ? 'selected' : ''}`}>
+            {t('Accueil')}
+          </Link>
+          <Link to='/history' className={`${isPageSelected('history') ? 'selected' : ''}`}>
+            {t('M+B')}
+          </Link>
+          <a
+            href={language === 'es' ? 'https://form.jotform.com/222162111714340' : 'https://form.jotform.com/222052491788057'}
+            target='_blank'
+            rel='noreferrer'
+          >
+            {t('RSVP')}
+          </a>
+          <Link to='/access&housing' className={`${isPageSelected('access&housing') ? 'selected' : ''}`}>
+            {t('Accès & logement')}
+          </Link>
+          <Link to='/schedule' className={`${isPageSelected('schedule') ? 'selected' : ''}`}>
+            {t('Programme')}
+          </Link>
+          <Link to='/q&a' className={`${isPageSelected('q&a') ? 'selected' : ''}`}>
+            {t('FAQ')}
+          </Link>
+          <Link to='/present' className={`${isPageSelected('present') ? 'selected' : ''}`}>
+            {t('Cadeau')}
+          </Link>
+        </nav>
+        <img
+          id='burger-icon'
+          onClick={e => {
+            e.stopPropagation();
+            setShowMenu(true);
+          }}
+          src='/icons/burger.svg'
+          alt='menu'
+        ></img>
         <div>
-          <nav>
-            <Link to='/' className={`${isPageSelected('') ? 'selected' : ''}`}>
-              {t('Accueil')}
-            </Link>
-            <Link to='/history' className={`${isPageSelected('history') ? 'selected' : ''}`}>
-              {t('M+B')}
-            </Link>
-            <a
-              href={language === 'es' ? 'https://form.jotform.com/222162111714340' : 'https://form.jotform.com/222052491788057'}
-              target='_blank'
-              rel='noreferrer'
-            >
-              {t('RSVP')}
-            </a>
-            <Link to='/access&housing' className={`${isPageSelected('access&housing') ? 'selected' : ''}`}>
-              {t('Accès & logement')}
-            </Link>
-            <Link to='/schedule' className={`${isPageSelected('schedule') ? 'selected' : ''}`}>
-              {t('Programme')}
-            </Link>
-            <Link to='/q&a' className={`${isPageSelected('q&a') ? 'selected' : ''}`}>
-              {t('FAQ')}
-            </Link>
-            <Link to='/present' className={`${isPageSelected('present') ? 'selected' : ''}`}>
-              {t('Cadeau')}
-            </Link>
-          </nav>
-        </div>
-        <div>
-          <div>
-            <select name='language' value={language} onChange={e => changeLanguage(e.target.value)} className='selected'>
-              {languages.map(l => (
-                <option key={l} value={l}>
-                  {l.toUpperCase()}
-                </option>
-              ))}
-            </select>
-          </div>
           {isVIP ? (
             <div className='vip-indicator'>
               <small>{t('Code valide')}</small>
@@ -129,6 +128,15 @@ const LayoutContent = ({ title, description, image, children }) => {
               {t("J'ai un code")}
             </button>
           )}
+          <div>
+            <select name='language' value={language} onChange={e => changeLanguage(e.target.value)} className='selected'>
+              {languages.map(l => (
+                <option key={l} value={l}>
+                  {l.toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </header>
       <div id='content'>{children}</div>
@@ -159,6 +167,42 @@ const LayoutContent = ({ title, description, image, children }) => {
           </form>
         </div>
       )}
+      <div id='burger-menu' style={{ right: showMenu ? '0' : '100%' }}>
+        <div id='burger-menu-content'>
+          <img id='burger-icon' onClick={e => setShowMenu(false)} src='/icons/burger.svg' alt='menu'></img>
+          <div className='with-margins'>
+            <Link onClick={e => setShowMenu(false)} to='/' className={`${isPageSelected('') ? 'selected' : ''}`}>
+              {t('Accueil')}
+            </Link>
+            <Link onClick={e => setShowMenu(false)} to='/history' className={`${isPageSelected('history') ? 'selected' : ''}`}>
+              {t('M+B')}
+            </Link>
+            <a
+              href={language === 'es' ? 'https://form.jotform.com/222162111714340' : 'https://form.jotform.com/222052491788057'}
+              target='_blank'
+              rel='noreferrer'
+            >
+              {t('RSVP')}
+            </a>
+            <Link
+              onClick={e => setShowMenu(false)}
+              to='/access&housing'
+              className={`${isPageSelected('access&housing') ? 'selected' : ''}`}
+            >
+              {t('Accès & logement')}
+            </Link>
+            <Link onClick={e => setShowMenu(false)} to='/schedule' className={`${isPageSelected('schedule') ? 'selected' : ''}`}>
+              {t('Programme')}
+            </Link>
+            <Link onClick={e => setShowMenu(false)} to='/q&a' className={`${isPageSelected('q&a') ? 'selected' : ''}`}>
+              {t('FAQ')}
+            </Link>
+            <Link onClick={e => setShowMenu(false)} to='/present' className={`${isPageSelected('present') ? 'selected' : ''}`}>
+              {t('Cadeau')}
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

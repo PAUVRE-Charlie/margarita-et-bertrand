@@ -99,3 +99,34 @@
   margin-left: 70px;
   max-width: 50%;
 }
+
+@media screen and (max-width: 700px) {
+  :root .history {
+    --min-padding: 5px;
+  }
+  .history-card {
+    padding: 10px;
+  }
+  .history .semibold,
+  .history small {
+    font-size: 12px;
+    text-align: center;
+  }
+  .history-icon {
+    width: 16%;
+  }
+  .history-image {
+    margin-top: 0;
+  }
+  .a-suivre {
+    flex-direction: column;
+    width: 100%;
+  }
+  .history-video {
+    max-width: 100%;
+    margin-left: 0;
+  }
+  iframe {
+    width: 100%;
+  }
+}

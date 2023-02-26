@@ -28,6 +28,10 @@
   opacity: 39%;
   position: absolute;
   inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .hero-text {
@@ -46,6 +50,7 @@
 .hero-info h2,
 .hero-info h1 {
   color: var(--white);
+  text-align: center;
 }
 
 .hero-tag {
@@ -61,6 +66,7 @@
   color: var(--white);
   margin-top: 15%;
   font-size: 16px;
+  text-align: center;
 }
 
 .hero-flower-left,
@@ -130,4 +136,26 @@
   position: absolute;
   top: -60px;
   right: calc(-1 * var(--actual-padding-side) + 20px);
+}
+
+@media screen and (max-width: 750px) {
+  .hero-text {
+    width: 100%;
+  }
+  .celebration {
+    margin-bottom: 100px;
+  }
+  .celebration-image,
+  .celebration-flower {
+    display: none !important;
+  }
+  .celebration-text > * {
+    text-align: center;
+  }
+  .indications {
+    justify-content: center;
+  }
+  .indication > p {
+    font-size: 14px;
+  }
 }

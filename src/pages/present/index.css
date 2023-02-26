@@ -10,10 +10,21 @@
 
 .present h4 {
   margin-bottom: 30px;
+  text-align: center;
+}
+
+.present p {
+  text-align: center;
 }
 
 .present-flower {
   width: 30vh;
   transform: rotateZ(17deg);
   margin-top: 40px;
+}
+
+@media screen and (max-width: 750px) {
+  .present {
+    margin-bottom: 100px;
+  }
 }

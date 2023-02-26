@@ -33,3 +33,24 @@
   margin-top: 150px;
   color: var(--quaternary);
 }
+
+@media screen and (max-width: 750px) {
+  .question-flower {
+    display: none;
+  }
+  .questions {
+    margin-top: 30px;
+    margin-bottom: 80px;
+  }
+  .instagramlink {
+    margin-top: 90px;
+    text-align: center;
+  }
+  .questions small,
+  .questions h4 {
+    text-align: center;
+  }
+  .question {
+    align-items: center;
+  }
+}

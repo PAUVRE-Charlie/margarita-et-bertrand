@@ -23,7 +23,7 @@ export default function QA() {
           <div>
             <h4>{t('Les enfants sont-ils invités ?')}</h4>
           </div>
-          <small>{t('Oui, bien-sûr, ils sont les bienvenus. Une baby-sitter sera présente pendant le cocktail')}</small>
+          <small>{t('Oui, bien-sûr, ils sont les bienvenus.')}</small>
         </div>
         <div className='question'>
           <div>

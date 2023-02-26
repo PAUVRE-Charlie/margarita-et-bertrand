@@ -24,6 +24,8 @@ export default function Home() {
           />
           <div className='hero-overlay' />
         </div>
+        <img className='hero-flower-left' src='/flowers/flower2.svg' />
+        <img className='hero-flower-right' src='/flowers/flower2.svg' />
         <div className='hero-text'>
           <div className='hero-info'>
             <h1>Margarita & Bertrand</h1>
@@ -33,8 +35,6 @@ export default function Home() {
             <h5 className='semibold'>{t('Rendez-vous le 3 Juin 2023 au Château le Chereau')}</h5>
           </div>
         </div>
-        <img className='hero-flower-left' src='/flowers/flower2.svg' />
-        <img className='hero-flower-right' src='/flowers/flower2.svg' />
       </div>
       <div className='celebration with-margins'>
         <div className='celebration-text'>

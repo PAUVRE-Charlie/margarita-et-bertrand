@@ -49,3 +49,24 @@
   left: calc(-1 * var(--actual-padding-side) - 20px);
   transform: scaleX(-1);
 }
+
+@media screen and (max-width: 750px) {
+  .schedule-flower {
+    display: none;
+  }
+  .day {
+    flex-direction: column !important;
+    margin-top: 40px;
+  }
+  .day .margin-left {
+    margin-left: 0;
+    margin-top: 30px;
+  }
+  .day .margin-right {
+    margin-right: 0;
+    margin-top: 30px;
+  }
+  .days {
+    margin-bottom: 100px;
+  }
+}
