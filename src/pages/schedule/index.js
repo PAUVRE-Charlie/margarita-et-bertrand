@@ -19,9 +19,12 @@ const ScheduleDays = () => {
           <div className='day-info'>
             <h4>{t('Vendredi 02 juin 2023')}</h4>
             <div className='schedule-item'>
-              <h5>{t('18h - Apéro dinatoire de bienvenue')}</h5>
-              <a href='https://goo.gl/maps/VY3uuYTJRAfR8kT97' target='_blank' rel='noreferrer'>
-                {t('Gîtes Les Poulitères, Montrieux-en-Sologne')}
+              <h5>{t('18h30 - Dégustation de vins')}</h5>
+            </div>
+            <div className='schedule-item'>
+              <h5>{t('20h - Apéro dinatoire de bienvenue')}</h5>
+              <a href='https://goo.gl/maps/8Ff4LE4B6suPcSuv7' target='_blank' rel='noreferrer'>
+                {t('Château le Chereau, Montrieux-en-Sologne')}
               </a>
             </div>
           </div>
@@ -56,7 +59,7 @@ const ScheduleDays = () => {
           <div className='day-info'>
             <h4>{t('Dimanche 04 juin 2023')}</h4>
             <div className='schedule-item'>
-              <h5>{t('11h - Brunch après mariage')}</h5>
+              <h5>{t('12h - Brunch après mariage')}</h5>
               <a href='https://goo.gl/maps/8Ff4LE4B6suPcSuv7' target='_blank' rel='noreferrer'>
                 {t('Château le Chereau, Montrieux-en-Sologne')}
               </a>
